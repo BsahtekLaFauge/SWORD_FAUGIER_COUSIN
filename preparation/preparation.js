@@ -1,65 +1,43 @@
 $(function() {
-	$('#validate').on('click', function(event) {
+
+	// Lors du clic sur le bouton d'entrée en jeu
+	$('#enterGame').on('click', function(event) {
 		var name = $('#name').val();
+
+		// On vérifie si le nom a plus de 3 lettres on ne compte pas les espaces
 		if (name.length - (name.split(" ").length-1) < 3) {
 			event.preventDefault();
 			$('.tropCourt').fadeIn(200);
 			return;
 		}
-		$('.tropCourt').fadeOut(200);
-		var coefs = distribute(),
-			perso = new Personnage(name, $('#man').prop("checked"), 3, coefs, []);
-			localStorage.setItem("persoPrincipal", perso); //TODO : décomposer l'objet pour pouvoir transiter de pages en pages
+
+		// Création d'un objet personnage, conversion de celui-ci en chaîne de caractères afin de le stocker dans localStorage
+		var perso = new Personnage(name, $('#man').prop("checked"), 3, distribute(), [], $('#avatarTest').attr('src'));
+			localStorage.setItem("persoPrincipal", JSON.stringify(perso));
+			console.debug(perso);
 	});
 
-	// Fonction qui retourne un tableau de coefficients de stats en fonction de ce que les gens trouvent le plus important
+	//Lorsque l'on clique sur le bouton valider, cela affiche l'image dont l'url est entré dans l'espace qui lui est attribué
+	$('#testImage').on('click', function(event) {
+		$('#avatarTest').attr('src', $('#imageUrl').val());
+	});
+
+	// Fonction qui retourne un tableau de coefficients de stats en fonction de ce qui a été coché dans les qualités en politique
 	function distribute() {
-		var life = 0,
-			attack = 0,
-			defense = 0,
-			speed = 0,
-			luck = 0,
+		var statsCoefs = [1, 1, 1, 1, 1],
+			i = 0,
+			ids = ["", '#lie', '#doubleTalk', '#relations', '#rhetoric']
 			count = 5;
 		while (count > 0) {
-			if (count > 0) {
-				life ++;
+			if (ids[i] === "" || $(ids[i]).prop("checked")) {
+				statsCoefs[i] ++;
 				count --;
-			} else {
-				return ([life, attack, defense, speed, luck]);
 			}
-			if ($('#lie').prop("checked")) {
-				if (count > 0) {
-					attack ++;
-					count --;
-				} else {
-					return ([life, attack, defense, speed, luck]);
-				}
-			}
-			if ($('#doubleTalk').prop("checked")) {
-				if (count > 0) {
-					defense ++;
-					count --;
-				} else {
-					return ([life, attack, defense, speed, luck]);
-				}
-			}
-			if ($('#relations').prop("checked")) {
-				if (count > 0) {
-					speed ++;
-					count --;
-				} else {
-					return ([life, attack, defense, speed, luck]);
-				}
-			}
-			if ($('#rhetoric').prop("checked")) {
-				if (count > 0) {
-					luck ++;
-					count --;
-				} else {
-					return ([life, attack, defense, speed, luck]);
-				}
+			i++;
+			if (i === 5) {
+				i = 0;
 			}
 		}
-		return ([life, attack, defense, speed, luck]);
+		return statsCoefs;
 	}
 });

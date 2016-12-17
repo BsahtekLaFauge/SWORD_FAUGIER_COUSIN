@@ -2,3 +2,15 @@
 	display: none;
 	background: red;
 }
+
+#imgContainer {
+	height: 200px;
+	width: 140px;
+	border: 2px solid grey;
+	margin: 20px 0;
+}
+
+#avatarTest {
+	height: 100%;
+	width: 100%
+}

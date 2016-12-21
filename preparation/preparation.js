@@ -13,8 +13,8 @@ $(function() {
 
 		// Création d'un objet personnage, conversion de celui-ci en chaîne de caractères afin de le stocker dans localStorage
 		var perso = new Personnage(name, $('#man').prop("checked"), 3, distribute(), [], $('#avatarTest').attr('src'));
-			localStorage.setItem("persoPrincipal", JSON.stringify(perso));
-			console.debug(perso);
+		localStorage.setItem("listePersos", [JSON.stringify(perso)]);
+		localStorage.setItem("tableau", 1);
 	});
 
 	//Lorsque l'on clique sur le bouton valider, cela affiche l'image dont l'url est entré dans l'espace qui lui est attribué

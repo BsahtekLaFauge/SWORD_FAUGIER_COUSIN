@@ -1,4 +1,3 @@
-
 	function Personnage(name, sex, level, statCoefs, attacksId, imageUrl) {
 		var self = this;
 

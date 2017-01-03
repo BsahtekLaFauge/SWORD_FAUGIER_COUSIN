@@ -3,14 +3,20 @@
 	background: red;
 }
 
-#imgContainer {
+.imgContainer {
 	height: 200px;
 	width: 140px;
 	border: 2px solid grey;
 	margin: 20px 0;
 }
 
-#avatarTest {
+.avatar {
 	height: 100%;
-	width: 100%
+	width: 100%;
+}
+
+.personnage {
+	display: block;
+	padding: 5px;
+	border: 2px solid black;
 }

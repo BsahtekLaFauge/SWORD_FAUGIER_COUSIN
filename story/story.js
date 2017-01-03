@@ -2,6 +2,26 @@ $(function() {
 
 	var persoList = JSON.parse(localStorage.listePersos);
 	nextTableau(localStorage.tableau);
+	displayCharactersList(persoList)
+
+	function displayCharactersList(persoList) {
+		var divListPersos = $('.listePersonnages');
+		$.each(persoList, function(index, perso) {
+			// création des éléments de fiche perso
+			var divPerso = $('<div class="personnage"></div>'),
+				imagePerso = $('<div class="imgContainer"><img class="avatar" src=' + perso.imageUrl + '></div>'),
+				namePerso = $('<span>' + perso.name + '</span>'),
+				levelPerso = $('<span>lvl ' + perso.level + '</span>'),
+				lifePerso = $('<span>' + perso.currentLifePoints + '/' + perso.stats[0] + '</span>');
+
+			// insertion des éléments de fiche perso
+			$(divPerso).append(namePerso);
+			$(divPerso).append(imagePerso);
+			$(divPerso).append(levelPerso);
+			$(divPerso).append(lifePerso);
+			$(divListPersos).append(divPerso);
+		});
+	}
 
 	function displayTableau(tableau) {
 		// créer tous les composants à mettre dans le tableau

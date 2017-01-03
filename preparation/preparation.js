@@ -12,14 +12,14 @@ $(function() {
 		}
 
 		// Création d'un objet personnage, conversion de celui-ci en chaîne de caractères afin de le stocker dans localStorage
-		var perso = new Personnage(name, $('#man').prop("checked"), 3, distribute(), [], $('#avatarTest').attr('src'));
+		var perso = new Personnage(name, $('#man').prop("checked"), 3, distribute(), [], $('.avatar').attr('src'));
 		localStorage.setItem("listePersos", JSON.stringify([perso]));
 		localStorage.setItem("tableau", 1);
 	});
 
 	//Lorsque l'on clique sur le bouton valider, cela affiche l'image dont l'url est entré dans l'espace qui lui est attribué
 	$('#testImage').on('click', function(event) {
-		$('#avatarTest').attr('src', $('#imageUrl').val());
+		$('.avatar').attr('src', $('#imageUrl').val());
 	});
 
 	// Fonction qui retourne un tableau de coefficients de stats en fonction de ce qui a été coché dans les qualités en politique

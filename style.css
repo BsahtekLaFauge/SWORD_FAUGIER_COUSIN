@@ -17,6 +17,7 @@
 	display: block;
 	padding: 5px;
 	border: 2px solid black;
+	width: 12%;
 }
 
 html, body {
@@ -50,4 +51,16 @@ h1 {
 
 .preparation div span {
 	margin: auto;  
+}
+
+.persosPrincipaux {
+	width: 40%;
+	float: left;
+	margin-left: 5%;
+}
+
+.persosEnnemis {
+	width: 40%;
+	float: right;
+	margin-right: 5%
 }

@@ -1,9 +1,9 @@
-	function Personnage(name, sex, level, statCoefs, attacksId, imageUrl) {
+	function Personnage(name, isMan, level, statCoefs, attacksId, imageUrl) {
 		var self = this;
 
 		// Mise à jour des infos sur le perso
 		self.name = name;
-		self.sex = sex;
+		self.isMan = isMan;
 		self.level = level;
 		self.experience = 0;
 		self.imageUrl = imageUrl;

@@ -5,9 +5,7 @@
 
 .imgContainer {
 	height: 200px;
-	width: 140px;
-	border: 2px solid grey;
-	margin: 20px 0;
+	width: 140px !important;
 }
 
 .avatar {
@@ -19,4 +17,37 @@
 	display: block;
 	padding: 5px;
 	border: 2px solid black;
+}
+
+html, body {
+	background-color: #29293d;
+	color: #ffffcc;
+}
+
+.preparation {
+	margin: auto;
+	width: 70%;
+}
+
+.preparation .imgContainer {
+	border: 2px solid #ffffcc;
+	margin: auto;
+}
+
+h1 {
+	text-align: center;
+	font-size: 40px;
+}
+
+.preparation div {
+	margin: auto;
+	width: 60%;
+}
+
+.preparation input[type='checkbox'], .preparation input[type='radio'] {
+	margin-left: 30%;
+}
+
+.preparation div span {
+	margin: auto;  
 }

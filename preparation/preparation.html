@@ -8,36 +8,46 @@
 		<script type="text/javascript" src="../class/personnage.js"></script>
 	</head>
 	<body>
-		<h1>Des magouilles et des actes</h1>
-		<h4>Entrez votre nom de politicien(ne)</h4>
+		<div class="preparation">
+			<h1>Des magouilles et des actes</h1>
 
-		<!-- gestion du pseudo -->
-		<input type="text" id="name"></input>
-		<span class="tropCourt">Trouves un nom plus long tout de même</span><br/>
+			<!-- gestion du pseudo -->
+			<div>
+				<span>Entrez votre nom de politicien(ne)</span><br/>
+				<input type="text" id="name"></input>
+				<span class="tropCourt">Trouves un nom plus long tout de même</span><br/>
+			</div>
 
-		<!-- gestion du sexe -->
-		<label>Sexe :</label><br/>
-		<input type="radio" name="gender" id="man" value="homme" checked> Homme
-		<input type="radio" name="gender" id="woman" value="femme"> Femme<br>
+			<!-- gestion du sexe -->
+			<div>
+				<label>Sexe :</label><br/>
+				<input type="radio" name="gender" id="man" value="homme" checked> Homme
+				<input type="radio" name="gender" id="woman" value="femme"> Femme<br>
+			</div>
 
-		<!-- gestion des stats -->
-		<label>Qu'est-ce qui est important pour vous en politique?</label><br/>
-		<input type="checkbox" id="lie">La capacité à mentir<br>
-		<input type="checkbox" id="doubleTalk">La maîtrise de la langue de bois<br>
-		<input type="checkbox" id="relations">Les relations avec BFM TV <br>
-		<input type="checkbox" id="rhetoric"> La répartie<br>
+			<!-- gestion des stats -->
+			<div>
+				<span>Qu'est-ce qui est important pour vous en politique?</span><br/>
+				<input type="checkbox" id="lie">La capacité à mentir<br>
+				<input type="checkbox" id="doubleTalk">La maîtrise de la langue de bois<br>
+				<input type="checkbox" id="relations">Les relations avec BFM TV <br>
+				<input type="checkbox" id="rhetoric"> La répartie<br>
+			</div>
 
-		<!--gestion de l'avatar -->
-		<span>(optionnel) Entrez l'url d'une image, celle-ci sera votre avatar</span><br/>
-		<input type="text" id='imageUrl'>
-		<button id="testImage">Valider</button><br/>
-		<div class="imgContainer">
-			<img class="avatar" src="https://artemissia.files.wordpress.com/2013/09/personnage-mystc3a8re.jpg">
+			<!--gestion de l'avatar -->
+			<div>
+				<span>(optionnel) Entrez l'url d'une image, celle-ci sera votre avatar</span><br/>
+				<input type="text" id='imageUrl'>
+				<button id="testImage">Valider</button><br/>
+				<div class="imgContainer">
+					<img class="avatar" src="https://artemissia.files.wordpress.com/2013/09/personnage-mystc3a8re.jpg">
+				</div>
+			</div>
+
+			<!-- bouton de validation -->
+			<a id="enterGame" href="../story/story.html">
+				<button>Entrer dans le politique game</button>
+			</a>
 		</div>
-
-		<!-- bouton de validation -->
-		<a id="enterGame" href="../story/story.html">
-			<button>Entrer dans le politique game</button>
-		</a>
 	</body>
 </html>

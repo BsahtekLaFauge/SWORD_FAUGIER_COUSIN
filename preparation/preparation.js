@@ -12,7 +12,7 @@ $(function() {
 		}
 
 		// Création d'un objet personnage, conversion de celui-ci en chaîne de caractères afin de le stocker dans localStorage
-		var perso = new Personnage(name, $('#man').prop("checked"), 3, distribute(), [], $('.avatar').attr('src'));
+		var perso = new Personnage(name, $('#man').prop("checked"), 3, true, distribute(), [{id: '1', lvlToReach: 1}, {id: '2', lvlToReach: 1}], $('.avatar').attr('src'));
 		localStorage.setItem("listePersos", JSON.stringify([perso]));
 		localStorage.setItem("tableau", 1);
 	});

@@ -3,12 +3,26 @@
 	<head>
 		<link rel="stylesheet" type="text/css" href="../style.css">
 		<meta charset="utf-8"/>
-		<script type="text/javascript" src="../jquery.js"></script>
-		<script type="text/javascript" src="battle.js"></script>
 	</head>
 	<body>
-		<div class="persosPrincipaux"></div>
-		<div class="persosEnnemis"></div>
-		<div class="logsBattle"></div>
+		<div class="battle">
+			<div class="combattants">
+				<div class="persosPrincipaux"></div>
+				<div class="persosEnnemis"></div>
+			</div>
+			<div class="context">
+				<s><span id="tour"></span></s><br/>
+				<span id="persoTour"></span><br/>
+			</div>
+			<div class='attacksContainer'></div>
+			<div class="logsBattle"></div>
+		</div>
+
+		<script type="text/javascript" src="../jquery.js"></script>
+		<script type="text/javascript" src="battle.js"></script>
+		<script type="text/javascript" src="../data/battleData.js"></script>
+		<script type="text/javascript" src="../class/attack.js"></script>
+		<script type="text/javascript" src="../data/attackData.js"></script>
+		<script type="text/javascript" src="../class/personnage.js"></script>
 	</body>
 </html>

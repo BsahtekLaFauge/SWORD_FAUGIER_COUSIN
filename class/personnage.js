@@ -1,15 +1,22 @@
-	function Personnage(name, isMan, level, statCoefs, attacksId, imageUrl) {
+	function Personnage(name, isMan, level, ally, statCoefs, attacksInfos, imageUrl) {
 		var self = this;
 
 		// Mise à jour des infos sur le perso
 		self.name = name;
 		self.isMan = isMan;
 		self.level = level;
+		self.ally = ally;
 		self.experience = 0;
 		self.imageUrl = imageUrl;
 
-		//TODO : gérer les attaques
 		self.attacks = [];
+		$.each(attacksInfos, function(key, attackInfos) {
+			if (attackInfos.lvlToReach <= self.level) {
+				console.debug(self.attacks);
+				self.attacks.push(generateAttack(attackInfos.id));
+				console.debug(self.attacks);
+			}
+		});
 
 		// Mise à jour des stats en fonction des coefficients et du level
 		self.statCoefs = statCoefs;

@@ -11,7 +11,7 @@ $(function() {
 			var divPerso = $('<div class="personnage"></div>'),
 				imagePerso = $('<div class="imgContainer"><img class="avatar" src=' + perso.imageUrl + '></div>'),
 				namePerso = $('<span>' + perso.name + '</span>'),
-				levelPerso = $('<span>lvl ' + perso.level + '</span>'),
+				levelPerso = $('<span>lvl ' + perso.level + '</span><br/>'),
 				lifePerso = $('<span>' + perso.currentLifePoints + '/' + perso.stats[0] + '</span>');
 
 			// insertion des éléments de fiche perso
@@ -41,8 +41,9 @@ $(function() {
 
 		$.each(tableau.choices, function(index, choice) {
 			button = $('<button>' + choice.text + '</button>');
-			if (choice.battle) {
-				// TODO afficher image battle
+			if (choice.battle !== '0') {
+				var image = $('<div class="battleContainer"><img src="../ressources/images/battle.png" /></div>');
+				button.append(image);
 			}
 			$(button).on('click', function() {
 				onButtonClicked(choice.battle, choice.nextTableauNum);
@@ -52,18 +53,20 @@ $(function() {
 	}
 
 	function onButtonClicked(battle, num) {
-		if (!battle) {
+		if (battle === '0') {
 			nextTableau(num);
 		}
 		else {
-			// TODO: gérer les combats
+			localStorage.setItem('battleId', battle);
+			localStorage.setItem('tableauWhenWon', num);
+			window.location.replace('../battle/battle.html');
 		}
 	}
 
 	function nextTableau(num) {
 		if (num === '0') {
 			localStorage.clear();
-			window.location.replace('../preparation/preparation.html')
+			window.location.replace('../preparation/preparation.html');
 		}
 		var tableau = generateStory(num);
 		displayTableau(tableau);

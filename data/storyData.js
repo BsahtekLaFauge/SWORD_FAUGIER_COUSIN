@@ -55,11 +55,11 @@ function generateStory(id) {
 			break;
 		case '4':
 			title = "Votre premier débat";
-			storyText = "Pour commencer vous devriez apprendre à débattre (on préfèrera le terme combat, ça aguiche plus et ça évitera à nos développeurs de faire des lapsus.\
+			storyText = "Pour commencer vous devriez apprendre à débattre (on préfèrera le terme combattre, ça aguiche plus et ça évitera à nos développeurs de faire des lapsus).\
 			Mais pour cela il faudrait que vous trouviez des adversaires, mais ceux-ci ne courent pas à tous les coins de rue";
 			choices.push({
 				text: "Continuer",
-				nextTableauNum: '4',
+				nextTableauNum: '5',
 				battle: '0'
 			});
 			break;

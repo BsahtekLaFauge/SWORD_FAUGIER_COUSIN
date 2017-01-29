@@ -16,6 +16,10 @@ $(function() {
 
 	function handleTour() {
 		var perso = sortedPersosList[cptPerso];
+		while(!perso.currentLifePoints) {
+			changePersoToPlay();
+			perso = sortedPersosList[cptPerso];
+		}
 		if (perso.ally) {
 			$.each(perso.attacks, function(key, attack) {
 				displayAttack(attack, perso);
@@ -41,13 +45,16 @@ $(function() {
 	}
 	
 	function chooseTarget(attack, attacker) {
-		$('.persosEnnemis .personnage').addClass('possibleTargetEnemy').each(function (key, target) {
-			var $target = $(target);
-			$target.on('click', function() {
-				var perso = sortedPersosList[parseInt($target.attr('name'))];
-				applyAttack(perso, attacker, attack);
-				$target.children().last().text(perso.currentLifePoints + '/' + perso.stats[0]);
-			});
+		$('.persosEnnemis .personnage').each(function (key, target) {
+			var $target = $(target),
+				perso = sortedPersosList[parseInt($target.attr('name'))];
+			if (perso.currentLifePoints) {
+				$target.addClass('possibleTargetEnemy');
+				$target.on('click', function() {
+					applyAttack(perso, attacker, attack);
+					$target.children().last().text(perso.currentLifePoints + '/' + perso.stats[0]);
+				});
+			}
 		});
 	}
 
@@ -57,19 +64,45 @@ $(function() {
 			target.currentLifePoints -= parseInt(((attack.damage * attacker.stats[1])/20)/(1 + target.stats[2]*0.01));
 			if (target.currentLifePoints < 0) {
 				target.currentLifePoints = 0;
-				// TODO: Gérer le fait que quand un perso est mort il ne joue plus
-				// TODO: Gérer la victoire d'un des 2 groupes
-				// TODO: Revenir au bloc histoire une fois que le combat est fini avec un game over ou l'histoire de base
+				if (isVictory(attacker.ally)) {
+					if (attacker.ally) {
+						$.each(listePersos, function(key, perso) {
+							perso.experience += battle.battleExp;
+							levelUp(perso);
+						});
+						localStorage.setItem('tableau', localStorage.getItem('tableauWhenWon'));
+						localStorage.setItem('listePersos', JSON.stringify(listePersosStorage));
+					} else {
+						localStorage.setItem('loose', true);
+					}
+					window.location.replace('../story/story.html');
+				}
 			}
 		}
 		$('.possibleTargetEnemy').removeClass('possibleTargetEnemy').off('click');
 		$('.attacksContainer').empty();
+		changePersoToPlay();
+		handleTour();
+	}
+
+	function isVictory(isAlly) {
+		var listToCheck = isAlly ? listeEnnemis : listePersos,
+			i = 0;
+		while (i < listToCheck.length) {
+			if (listToCheck[i].currentLifePoints) {
+				return false;
+			}
+			i++;
+		}
+		return true;
+	}
+
+	function changePersoToPlay() {
 		cptPerso++;
 		if (cptPerso >= sortedPersosList.length) {
 			cptPerso = 0;
 			cptTour ++;
 		}
-		handleTour();
 	}
 
 	function displayList(element, list) {

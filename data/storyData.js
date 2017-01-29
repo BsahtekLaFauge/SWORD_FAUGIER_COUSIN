@@ -74,7 +74,7 @@ function generateStory(id) {
 			});
 			choices.push({
 				text: "Le combattre",
-				nextTableauNum: '7',
+				nextTableauNum: '8',
 				battle: '1'
 			});
 			break;
@@ -90,6 +90,31 @@ function generateStory(id) {
 			choices.push({
 				text: "Quitter",
 				nextTableauNum: '0',
+				battle: '0'
+			});
+			break;
+		case '7':
+			title = "GAME OVER";
+			storyText = "Vos adversaires ont eu raison de vous et vous passez pour un nul auprès de tous vos fans, \
+			vous prenez votre retraite avant même d'avoir pu frauder un minimum";
+			choices.push({
+				text: "Reprendre depuis le dernier tableau",
+				nextTableauNum: localStorage.getItem('tableau'),
+				battle: '0'
+			});
+			choices.push({
+				text: "Quitter",
+				nextTableauNum: '0',
+				battle: '0'
+			});
+			break;
+		case '8':
+			title = "Victoire incroyable";
+			storyText = "Oh mon dieu vous avez gagné, personne n'en a quoi que ce soit à faire mais vous pouvez tout de même en tirer une satisfaction.\
+			Si vous avez été blessé dans la bataille, vous devriez prendre un petit remontant dans votre inventaire en bas à droite, ah mais non c'est vrai que vous êtes pauvre.";
+			choices.push({
+				text: "Continuer",
+				nextTableauNum: '9',
 				battle: '0'
 			});
 			break;

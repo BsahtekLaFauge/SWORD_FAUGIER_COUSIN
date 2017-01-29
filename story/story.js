@@ -1,8 +1,14 @@
 $(function() {
 
-	var persoList = JSON.parse(localStorage.listePersos);
-	nextTableau(localStorage.tableau);
-	displayCharactersList(persoList)
+	var persoList = JSON.parse(localStorage.getItem('listePersos'));
+	if (localStorage.getItem('loose') === true) {
+		localStorage.setItem('loose', false);
+		window.location.reload();
+	}
+	else {
+		nextTableau(localStorage.getItem('tableau'));
+		displayCharactersList(persoList);
+	}
 
 	function displayCharactersList(persoList) {
 		var divListPersos = $('.listePersonnages');
@@ -55,6 +61,7 @@ $(function() {
 	function onButtonClicked(battle, num) {
 		if (battle === '0') {
 			nextTableau(num);
+			localStorage.setItem('tableau', num);
 		}
 		else {
 			localStorage.setItem('battleId', battle);

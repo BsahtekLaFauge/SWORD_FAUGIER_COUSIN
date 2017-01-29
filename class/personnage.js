@@ -1,4 +1,4 @@
-	function Personnage(name, isMan, level, ally, statCoefs, attacksInfos, imageUrl) {
+	function Personnage(name, isMan, level, ally, statsCoefs, attacksInfos, imageUrl) {
 		var self = this;
 
 		// Mise à jour des infos sur le perso
@@ -7,29 +7,37 @@
 		self.level = level;
 		self.ally = ally;
 		self.experience = 0;
+		self.experienceToNextLevel = 50;
 		self.imageUrl = imageUrl;
 
 		self.attacks = [];
 		$.each(attacksInfos, function(key, attackInfos) {
 			if (attackInfos.lvlToReach <= self.level) {
-				console.debug(self.attacks);
 				self.attacks.push(generateAttack(attackInfos.id));
-				console.debug(self.attacks);
 			}
 		});
 
 		// Mise à jour des stats en fonction des coefficients et du level
-		self.statCoefs = statCoefs;
-		self.stats = [self.statCoefs[0]*10 + self.statCoefs[0]*self.level , 0, 0, 0, 0];
+		self.statsCoefs = statsCoefs;
+		self.stats = [self.statsCoefs[0]*10 + self.statsCoefs[0]*self.level , 0, 0, 0, 0];
 		self.currentLifePoints = self.stats[0];
 		for (var i = 1; i < 5; i ++) {
-			self.stats[i] = self.statCoefs[i]*(7 + self.level);
+			self.stats[i] = self.statsCoefs[i]*(7 + self.level);
+		}
+
+		for (var i = 1; i <= self.level; i++) {
+			self.experienceToNextLevel += i*10;
 		}
 	}
 
-	function levelUP(perso) {
+	function levelUp(perso) {
 		var i;
-		for (i = 0; i < 5; i ++) {
-			perso.stats[i] += perso.statsCoefs[i];
+		while (perso.experience >= perso.experienceToNextLevel) {
+			for (i = 0; i < 5; i ++) {
+				perso.stats[i] += perso.statsCoefs[i];
+			}
+			perso.experience -= perso.experienceToNextLevel;
+			perso.experienceToNextLevel += perso.level*10;
+			perso.level++;
 		}
 	}

@@ -12,9 +12,9 @@ $(function() {
 		}
 
 		// Création d'un objet personnage, conversion de celui-ci en chaîne de caractères afin de le stocker dans localStorage
-		var perso = new Personnage(name, $('#man').prop("checked"), 3, true, distribute(), [{id: '1', lvlToReach: 1}, {id: '2', lvlToReach: 1}], $('.avatar').attr('src'));
-		localStorage.setItem("listePersos", JSON.stringify([perso]));
-		localStorage.setItem("tableau", 1);
+		var perso = new Personnage(name, $('#man').prop('checked'), 3, true, distribute(), [{id: '1', lvlToReach: 1}, {id: '2', lvlToReach: 1}], $('.avatar').attr('src'));
+		localStorage.setItem('listePersos', JSON.stringify([perso]));
+		localStorage.setItem('tableau', 1);
 	});
 
 	//Lorsque l'on clique sur le bouton valider, cela affiche l'image dont l'url est entré dans l'espace qui lui est attribué
@@ -26,7 +26,7 @@ $(function() {
 	function distribute() {
 		var statsCoefs = [1, 1, 1, 1, 1],
 			i = 0,
-			ids = ["", '#lie', '#doubleTalk', '#relations', '#rhetoric']
+			ids = ['', '#lie', '#doubleTalk', '#relations', '#rhetoric']
 			count = 5;
 		while (count > 0) {
 			if (ids[i] === "" || $(ids[i]).prop("checked")) {

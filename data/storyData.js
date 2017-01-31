@@ -112,6 +112,48 @@ function generateStory(id) {
 				battle: '0'
 			});
 			break;
+		case '10':
+		title = "Refus catégorique";
+		storyText = "Vous voulez assister au meeting de Florian Philippot, un homme de couleur vous suit de près...\
+		 Aussitôt Jean-Marie Lepen vous bloque la route et le somme de \"rentrer dans son pays\" !";
+		choices.push({
+			text: "Défendre l'homme de couleur",
+			nextTableauNum: '11',
+			battle: '3'
+			});
+			choices.push({
+				text: "Chasser l'homme à coups de pieds aux fesses",
+				nextTableauNum: '12',
+				battle: '0'
+				});
+				break;
+	 case '11':
+		title = "Nouvel ami";
+		storyText = "L'homme est émerveillé par votre courage et vous offre une petite boîte d'origan qui en fait n'est pas de l'origan, mais il vous fait ainsi comprendre qu'il est proche de la nature. \
+		Il vous tend ensuite sa carte d'Europe Ecologie les Verts. Effectivement, elle est verte. \
+Félicitations ! Votre renommé grandit !";
+		choices.push({
+			text: "Continuer",
+			nextTableauNum: '13',
+			battle: '0'
+			});
+		break;
+	 case '12':
+		title = "Nouvel ami";
+		storyText = "Jean Marie assiste à la scène avec des étoiles dans les yeux, \
+		cette pointe de racisme réveille en lui la nostalgie de sa jeunesse. Il voit de l'avenir en vous,\
+		il vous propose de rentrer pour vous dispenser quelques précieux conseils politiques.";
+		 choices.push({
+		   text: "Entrer",
+		   nextTableauNum: '14',
+		   battle: '0'
+			 });
+	  choices.push({
+	    text: "Décliner grâce à un prétexte bidon",
+	 	  nextTableauNum: '14',
+ 		  battle: '0'
+	 	  });
+				 break;
 		default:
 			return null;
 			break;

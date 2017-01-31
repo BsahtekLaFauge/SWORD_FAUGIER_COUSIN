@@ -39,5 +39,6 @@
 			perso.experience -= perso.experienceToNextLevel;
 			perso.experienceToNextLevel += perso.level*10;
 			perso.level++;
+			alert(perso.name + ' a gagné un niveau');
 		}
 	}

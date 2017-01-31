@@ -37,7 +37,7 @@ $(function() {
 
 	function displayAttack(attack, attacker) {
 		var attackContainer = $('.attacksContainer'),
-			attackButton = $('<button>' + attack.name + '</button>');
+			attackButton = $('<button title="' + attack.description + '">' + attack.name + '</button>');
 		attackContainer.append(attackButton);
 		attackButton.on('click', function () {
 			chooseTarget(attack, attacker);
@@ -49,6 +49,8 @@ $(function() {
 			var $target = $(target),
 				perso = sortedPersosList[parseInt($target.attr('name'))];
 			if (perso.currentLifePoints) {
+				$target.removeClass('possibleTargetEnemy');
+				$target.off('click');
 				$target.addClass('possibleTargetEnemy');
 				$target.on('click', function() {
 					applyAttack(perso, attacker, attack);
@@ -83,7 +85,7 @@ $(function() {
 					}
 					setTimeout(function () {
 						window.location.replace('../story/story.html');
-					}, 2000);
+					}, 3000);
 				}
 			}
 		}
@@ -138,7 +140,7 @@ $(function() {
 		for(var i = 0; i < list.length; i++) {
 			for(var j = i + 1; j < list.length; j++) {
 				if(list[j].stats[3] > list[i].stats[3]) {
-					var temp = l[j];
+					var temp = list[j];
 					list[j] = list[i];
 					list[i] = temp;
 				}

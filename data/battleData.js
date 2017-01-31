@@ -20,12 +20,12 @@ function generateBattle(id) {
 			switch (Math.floor(Math.random()*4)) {
 				case 1:
 					for (i = 0; i < number; i++) {
-						listePersos.push(new Personnage('Militant PS', true, lvl, false, [3, 2, 1, 1, 1], [{id:'3', lvlToReach: 1}], '../ressources/images/MilitantPS.jpg'));
+						listePersos.push(new Personnage('Militant PS', true, lvl, false, [2, 2, 1, 2, 1], [{id:'3', lvlToReach: 1}], '../ressources/images/MilitantPS.jpg'));
 					}
 					break;
 				case 2:
 					for (i = 0; i < number; i++) {
-						listePersos.push(new Personnage('Militant LR', true, lvl, false, [2, 1, 2, 2, 1], [{id:'4', lvlToReach: 1}], '../ressources/images/MilitantLR.jpg'));
+						listePersos.push(new Personnage('Militant LR', true, lvl, false, [1, 1, 3, 2, 1], [{id:'4', lvlToReach: 1}], '../ressources/images/MilitantLR.jpg'));
 					}
 					break;
 				case 3:

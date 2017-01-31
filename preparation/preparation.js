@@ -15,6 +15,8 @@ $(function() {
 		var perso = new Personnage(name, $('#man').prop('checked'), 3, true, distribute(), [{id: '1', lvlToReach: 1}, {id: '2', lvlToReach: 1}], $('.avatar').attr('src'));
 		localStorage.setItem('listePersos', JSON.stringify([perso]));
 		localStorage.setItem('tableau', 1);
+		localStorage.setItem('inventaire', JSON.stringify([]));
+		localStorage.setItem('item', '0');
 	});
 
 	//Lorsque l'on clique sur le bouton valider, cela affiche l'image dont l'url est entré dans l'espace qui lui est attribué

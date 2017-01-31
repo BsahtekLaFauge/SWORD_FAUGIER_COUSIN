@@ -2,7 +2,8 @@ function generateStory(id) {
 	var storyText,
 		choices = [],
 		title,
-		image = null;
+		image = null,
+		item;
 
 	switch (id) {
 		case '1':
@@ -15,6 +16,9 @@ function generateStory(id) {
 				nextTableauNum: '2',
 				battle: '0'
 			});
+			item = {
+				id: '0'
+			};
 			break;
 		case '2':
 			title = "Le Tuto";
@@ -30,6 +34,9 @@ function generateStory(id) {
 				nextTableauNum: '3',
 				battle: '0'
 			});
+			item = {
+				id: '0'
+			};
 			break;
 		case '3':
 			title = "GAME OVER";
@@ -46,6 +53,9 @@ function generateStory(id) {
 				nextTableauNum: '0',
 				battle: '0'
 			});
+			item = {
+				id: '0'
+			};
 			break;
 		case '4':
 			title = "Votre premier débat";
@@ -56,6 +66,9 @@ function generateStory(id) {
 				nextTableauNum: '5',
 				battle: '0'
 			});
+			item = {
+				id: '0'
+			};
 			break;
 		case '5':
 			title = "Votre premier combat";
@@ -71,6 +84,9 @@ function generateStory(id) {
 				nextTableauNum: '8',
 				battle: '1'
 			});
+			item = {
+				id: '0'
+			};
 			break;
 		case '6':
 			title = "GAME OVER";
@@ -86,6 +102,9 @@ function generateStory(id) {
 				nextTableauNum: '0',
 				battle: '0'
 			});
+			item = {
+				id: '0'
+			};
 			break;
 		case '7':
 			title = "GAME OVER";
@@ -101,6 +120,9 @@ function generateStory(id) {
 				nextTableauNum: '0',
 				battle: '0'
 			});
+			item = {
+				id: '0'
+			};
 			break;
 		case '8':
 			title = "Victoire incroyable";
@@ -111,7 +133,27 @@ function generateStory(id) {
 				nextTableauNum: '9',
 				battle: '0'
 			});
+			item = {
+				id: '0'
+			};
 			break;
+		case '9':
+			title = "Utiliser les objets";
+			storyText = "Bon je suis sympa avec vous je vous ai mis 5 interview chez pujadas dans votre inventaire, cliquez sur l'icone puis sur l'item en question pour l'utiliser";
+			choices.push({
+				text: "Continuer",
+				nextTableauNum: '10',
+				battle: '0',
+				item: {
+					id: '0'
+				}
+			});
+			item = {
+				id: '1',
+				number: 5
+			};
+			break;
+
 		case '10':
 		title = "Refus catégorique";
 		storyText = "Vous voulez assister au meeting de Florian Philippot, un homme de couleur vous suit de près...\
@@ -120,43 +162,52 @@ function generateStory(id) {
 			text: "Défendre l'homme de couleur",
 			nextTableauNum: '11',
 			battle: '3'
-			});
-			choices.push({
-				text: "Chasser l'homme à coups de pieds aux fesses",
-				nextTableauNum: '12',
-				battle: '0'
-				});
-				break;
-	 case '11':
+		});
+		choices.push({
+			text: "Chasser l'homme à coups de pieds aux fesses",
+			nextTableauNum: '12',
+			battle: '0'
+		});
+		item = {
+			id: '0'
+		};
+			break;
+		case '11':
 		title = "Nouvel ami";
 		storyText = "L'homme est émerveillé par votre courage et vous offre une petite boîte d'origan qui en fait n'est pas de l'origan, mais il vous fait ainsi comprendre qu'il est proche de la nature. \
 		Il vous tend ensuite sa carte d'Europe Ecologie les Verts. Effectivement, elle est verte. \
-Félicitations ! Votre renommé grandit !";
+		Félicitations ! Votre renommé grandit !";
 		choices.push({
 			text: "Continuer",
 			nextTableauNum: '13',
 			battle: '0'
-			});
+		});
+		item = {
+			id: '0'
+		};
 		break;
-	 case '12':
+	 	case '12':
 		title = "Nouvel ami";
 		storyText = "Jean Marie assiste à la scène avec des étoiles dans les yeux, \
 		cette pointe de racisme réveille en lui la nostalgie de sa jeunesse. Il voit de l'avenir en vous,\
 		il vous propose de rentrer pour vous dispenser quelques précieux conseils politiques.";
-		 choices.push({
-		   text: "Entrer",
-		   nextTableauNum: '14',
-		   battle: '0'
-			 });
-	  choices.push({
+		choices.push({
+			text: "Entrer",
+			nextTableauNum: '14',
+			battle: '0'
+		});
+	  	choices.push({
 	    text: "Décliner grâce à un prétexte bidon",
-	 	  nextTableauNum: '14',
- 		  battle: '0'
-	 	  });
-				 break;
+	 		nextTableauNum: '14',
+ 			battle: '0'
+	 	});
+	 	item = {
+			id: '0'
+		};
+		break;
 		default:
 			return null;
 			break;
 	}
-	return new Tableau(id, title, storyText, choices, image);
+	return new Tableau(id, title, storyText, choices, image, item);
 }

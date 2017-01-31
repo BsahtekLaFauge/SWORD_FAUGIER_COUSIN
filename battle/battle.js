@@ -59,10 +59,14 @@ $(function() {
 	}
 
 	function applyAttack(target, attacker, attack) {
-		// TODO: Faire un élément pour y mettre les logs des combats (exemple: JM Lepen utilise "Jeanne au secours" sur Militant PS)
+		var logs = $('.logsBattle');
 		if (attack.type === 'singleAttack') {
+			var span = $('<span>' + attacker.name + ' utilise ' + attack.name + ' sur ' + target.name + '</span><br/>');
+			logs.append(span);
 			target.currentLifePoints -= parseInt(((attack.damage * attacker.stats[1])/20)/(1 + target.stats[2]*0.01));
 			if (target.currentLifePoints < 0) {
+				span = $('<span>' + target.name + ' est KO</span><br/>');
+				logs.append(span);
 				target.currentLifePoints = 0;
 				if (isVictory(attacker.ally)) {
 					if (attacker.ally) {
@@ -72,17 +76,23 @@ $(function() {
 						});
 						localStorage.setItem('tableau', localStorage.getItem('tableauWhenWon'));
 						localStorage.setItem('listePersos', JSON.stringify(listePersosStorage));
+						logs.append('<span>Félicitations vous gagnez</span>');
 					} else {
-						localStorage.setItem('loose', true);
+						localStorage.setItem('loose', 'y');
+						logs.append('<span>Toute votre équipe est KO</span>');
 					}
-					window.location.replace('../story/story.html');
+					setTimeout(function () {
+						window.location.replace('../story/story.html');
+					}, 2000);
 				}
 			}
 		}
-		$('.possibleTargetEnemy').removeClass('possibleTargetEnemy').off('click');
-		$('.attacksContainer').empty();
-		changePersoToPlay();
-		handleTour();
+		if (!isVictory(attacker.ally) && !isVictory(!attacker.ally)) {
+			$('.possibleTargetEnemy').removeClass('possibleTargetEnemy').off('click');
+			$('.attacksContainer').empty();
+			changePersoToPlay();
+			handleTour();
+		}
 	}
 
 	function isVictory(isAlly) {

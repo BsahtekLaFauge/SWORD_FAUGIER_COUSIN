@@ -1,13 +1,19 @@
 $(function() {
 
 	var persoList = JSON.parse(localStorage.getItem('listePersos'));
-	if (localStorage.getItem('loose') === true) {
-		localStorage.setItem('loose', false);
-		window.location.reload();
-	}
-	else {
+	if (localStorage.getItem('loose') === 'y') {
+		localStorage.setItem('loose', 'n');
+		nextTableau('7');
+	} else {
 		nextTableau(localStorage.getItem('tableau'));
-		displayCharactersList(persoList);
+	}
+	displayCharactersList(persoList);
+	if (parseInt(localStorage.getItem('tableau')) > 7) {
+		var button = $('<img class="trainingButton" src="../ressources/images/training.webp">');
+		button.on('click', function () {
+			goTrain();
+		});
+		$('body').append(button);
 	}
 
 	function displayCharactersList(persoList) {
@@ -77,5 +83,11 @@ $(function() {
 		}
 		var tableau = generateStory(num);
 		displayTableau(tableau);
+	}
+
+	function goTrain() {
+		localStorage.setItem('battleId', '2');
+		localStorage.setItem('tableauWhenWon', localStorage.getItem('tableau'));
+		window.location.replace('../battle/battle.html');
 	}
 });

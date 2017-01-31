@@ -19,16 +19,10 @@ function generateStory(id) {
 		case '2':
 			title = "Le Tuto";
 			storyText = "Vous ne devez pas y connaître grand chose en politique je me trompe? \
-			Voici un petit tuto pour comprendre comment ça marche. Si tu penses en avoir besoin dit \"Wallah\", \
-			si tu te crois supérieur et que tu n'en a pas besoin dit \"Mashallah\"";
+			Voici un petit tuto pour comprendre comment ça marche. Si tu penses en avoir besoin dit \"Wallah.";
 			choices.push({
 				text: "Wallah",
 				nextTableauNum: '4',
-				battle: '0'
-			});
-			choices.push({
-				text: "Mashallah",
-				nextTableauNum: '10',
 				battle: '0'
 			});
 			choices.push({
@@ -110,8 +104,8 @@ function generateStory(id) {
 			break;
 		case '8':
 			title = "Victoire incroyable";
-			storyText = "Oh mon dieu vous avez gagné, personne n'en a quoi que ce soit à faire mais vous pouvez tout de même en tirer une satisfaction.\
-			Si vous avez été blessé dans la bataille, vous devriez prendre un petit remontant dans votre inventaire en bas à droite, ah mais non c'est vrai que vous êtes pauvre.";
+			storyText = "Waouh! vous avez gagné, personne n'en a quoi que ce soit à faire mais vous pouvez tout de même en tirer une satisfaction.\
+			Si vous avez été blessé dans la bataille, vous devriez prendre un petit remontant dans votre inventaire en bas à gauche, ah mais non c'est vrai que vous êtes pauvre.";
 			choices.push({
 				text: "Continuer",
 				nextTableauNum: '9',
